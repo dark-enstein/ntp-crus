@@ -392,11 +392,11 @@ func Unix(sec, frac uint32, u *UnixOpts) interface{} {
 }
 
 func (p *packet) LoadTimesUnix() {
-	output.OriginComp = fmt.Sprintf("%d", Unix(p.OrigTimeSec, p.OrigTimeFrac, &UnixOpts{nano: GlobalNanoFlag}))
-	output.ReferenceComp = fmt.Sprintf("%d", Unix(p.RefTimeSec, p.RefTimeFrac, &UnixOpts{nano: GlobalNanoFlag}))
-	output.ReceiveComp = fmt.Sprintf("%d", Unix(p.RxTimeSec, p.RxTimeFrac, &UnixOpts{nano: GlobalNanoFlag}))
-	output.TransmitComp = fmt.Sprintf("%d", Unix(p.TxTimeSec, p.TxTimeFrac, &UnixOpts{nano: GlobalNanoFlag}))
-	output.DestinationComp = fmt.Sprintf("%d", Unix(uint32(timeClientReceived.(time.Time).Unix()+ntpSeventyYearOffset), uint32(timeClientReceived.(time.Time).Nanosecond()), &UnixOpts{nano: GlobalNanoFlag}))
+	output.OriginComp = fmt.Sprintf("%v", Unix(p.OrigTimeSec, p.OrigTimeFrac, &UnixOpts{nano: GlobalNanoFlag}))
+	output.ReferenceComp = fmt.Sprintf("%v", Unix(p.RefTimeSec, p.RefTimeFrac, &UnixOpts{nano: GlobalNanoFlag}))
+	output.ReceiveComp = fmt.Sprintf("%v", Unix(p.RxTimeSec, p.RxTimeFrac, &UnixOpts{nano: GlobalNanoFlag}))
+	output.TransmitComp = fmt.Sprintf("%v", Unix(p.TxTimeSec, p.TxTimeFrac, &UnixOpts{nano: GlobalNanoFlag}))
+	output.DestinationComp = fmt.Sprintf("%v", Unix(uint32(timeClientReceived.(time.Time).Unix()+ntpSeventyYearOffset), uint32(timeClientReceived.(time.Time).Nanosecond()), &UnixOpts{nano: GlobalNanoFlag}))
 }
 
 func (p *packet) UnixRefPrintln() {
