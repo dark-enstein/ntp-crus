@@ -12,28 +12,9 @@ import (
 	"time"
 )
 
-// TODO Notes: Fix why the Offset and RTT is too large. sample below:
-//&{28 2 0 -25 9 44 3650272056 3904557432 1899285837 0 0 3904558069 2690991889 3904558069 2691072910}
-//TimeNow OriginTimestamp in Unix format
-//Before: Sec: 3904558069, Frac: 555061000
-//After: 2023-09-24 16:27:49 +0100 WEST
-//TimeNow ReceiveTimestamp in Unix format
-//Before: Sec: 3904558069, Frac: 2690991889
-//After: 2023-09-24 16:27:49 +0100 WEST
-//TimeNow TransmitTimestamp in Unix format
-//Before: Sec: 3904558069, Frac: 2691072910
-//After: 2023-09-24 16:27:49 +0100 WEST
-//Time response arrived from NTP Server
-//2023-09-24 16:27:49.555063084 +0100 WEST m=+0.218389127
-//
-//TimeNow ReferenceTimestamp in Unix format
-//Before: Sec: 3904557432, Frac: 1899285837
-//After: 2023-09-24 16:17:12 +0100 WEST
-//
-//TimeOffset sub (in duration): -5m18.222468458s
-//Time Offset calculated: -5m18.222468458s
-//RoundTripTime (in duration): -5m18.222468458s
-//RoundTrip Delay calculated: -5m18.222468458s
+// TODO: Split file into multiple files/packages
+// TODO: Revisit software design approach; structs, interfaces, and objects
+// TODO: Write extensive tests
 
 var (
 	GlobalNanoFlag        = true
@@ -64,26 +45,6 @@ var (
 | Round Trip Delay (RTT) ==>	 %v    														      |
 |-------------------------------------------------------------------------------|
 | Time Offset						 ==>	 %v    														      |
-|-------------------------------------------------------------------------------|
-`
-	NanoOutput = `
----------------------------------------------------------------------------------
-|  Field   |          Before           |         Time Output (nano)             |
-|          -----------------------------																				|
-|          |  Seconds    |  Fraction   |                                        |
-|          -----------------------------																				|
-| Origin   | 3904559550  | 696334000   | 2023-09-24 16:52:30 +0100 WEST         |
-| Receive  | 3904559550  | 696334000   | 2023-09-24 16:52:30 +0100 WEST         |
-| Transmit | 3904559550  | 696334000   | 2023-09-24 16:52:30 +0100 WEST         |
-| Dest     | 3904559550  | 696334000   | 1695571316000000000                    |
-|-------------------------------------------------------------------------------|
-| Ref      | 3904559550  | 696334000   | 2023-09-24 16:52:30 +0100 WEST         |
-|-------------------------------------------------------------------------------|
-
----------------------------------------------------------------------------------
-| Round Trip Delay (RTT) ==>	 424576208ns    														      |
-|-------------------------------------------------------------------------------|
-| Time Offset						 ==>	 424576208    															      |
 |-------------------------------------------------------------------------------|
 `
 )
